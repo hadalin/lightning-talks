@@ -1,0 +1,50 @@
+html {
+	overflow-y:scroll;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	padding-top: 30px;
+}
+
+.quickdate {
+	font-family: 'Roboto', sans-serif;
+}
+
+.datepicker {
+	margin-top: 20px;
+}
+
+.talk-list {
+	margin-bottom: 30px;
+}
+
+.talk-form {
+	margin-bottom: 50px;
+}
+
+.no-talks {
+	color: #a5a5a5;
+}
+
+.talks {
+	color: #aaa;
+	list-style-position: inside;
+}
+
+.talks .talk-author {
+	font-size: 1.4em;
+	color: #a5a5a5;
+}
+
+.talks .talk-title {
+	font-size: 2em;
+	color: #000;
+	padding-left: 10px;
+}
+
+.talks .delete-talk {
+	color: #eee;
+	cursor: pointer;
+	margin-left: 3px;
+}

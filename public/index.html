@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html ng-app="lightningTalks">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Lightning Talks</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="assets/vendor/quick-datepicker/ng-quick-date.css">
+	<link rel="stylesheet" href="assets/vendor/quick-datepicker/ng-quick-date-default-theme.css">
+	<link rel="stylesheet" href="assets/css/site.css">
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="assets/vendor/quick-datepicker/ng-quick-date.min.js"></script>
+	<script src="assets/vendor/sugar.min.js"></script>
+
+	<script src="js/controllers/main.js"></script>
+	<script src="js/services/talks.js"></script>
+	<script src="js/services/instance.js"></script>
+	<script src="js/app.js"></script>
+
+</head>
+<body ng-controller="mainController">
+	<div class="container">
+
+		<div class="jumbotron text-center">
+			<h1>Lightning talks</h1>
+			<quick-datepicker class="datepicker" ng-model='instanceData.date' ng-change="updateDate()" date-format='EEEE, d MMMM, yyyy' time-format="HH:mm"></quick-datepicker>
+		</div>
+
+		<div class="talk-list row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+
+			<div ng-show="talks.length == 0"><span class=no-talks><em>No talks yet.</em></span></div>
+
+				<ol class="talks">
+					<li ng-repeat="talk in talks">
+							<span class="talk-author">{{ talk.author }}</span> <span class="talk-title">{{ talk.title }}</span> <span ng-click="deleteTalk(talk._id)" class="delete-talk glyphicon glyphicon-remove" data-toggle="tooltip" title="Remove talk"></span>
+					</li>
+				</ol>
+
+			</div>
+		</div>
+
+		<div class="talk-form row">
+			<div class="col-sm-12 text-center">
+				<form>
+					<div class="form-group form-inline">
+						<input type="text" class="form-control input-lg text-center" placeholder="Who?" ng-model="talkData.author" autofocus>
+
+						<input type="text" class="form-control input-lg text-center" placeholder="What?" ng-model="talkData.title">
+
+						<button type="submit" class="btn btn-primary btn-lg" ng-click="createTalk()">Add</button>
+						<button type="submit" class="btn btn-primary btn-lg" ng-click="deleteAllTalks()">Remove All</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$('body').tooltip({
+	    	selector: '[data-toggle=tooltip]'
+		});
+	</script>
+</body>
+</html>
